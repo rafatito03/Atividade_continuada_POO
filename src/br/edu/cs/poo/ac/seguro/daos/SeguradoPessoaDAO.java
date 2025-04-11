@@ -1,18 +1,20 @@
 package br.edu.cs.poo.ac.seguro.daos;
 
+import java.io.Serializable;
+
 import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoPessoa;
 
-
-// As classes Segurado e SeguradoPessoa devem implementar Serializable.
-
-public class SeguradoPessoaDAO extends DAOGenerico {
+public class SeguradoPessoaDAO extends DAOGenerico implements Serializable {
+	
 	public SeguradoPessoaDAO() {
 		cadastro = new CadastroObjetos(SeguradoPessoa.class);
 	}
+	
 	public SeguradoPessoa buscar(String cpf) {
 		return (SeguradoPessoa)cadastro.buscar(cpf);
 	}
+	
 	public boolean incluir(SeguradoPessoa segurado) {
 		if (buscar(segurado.getCpf()) != null) {
 			return false;
