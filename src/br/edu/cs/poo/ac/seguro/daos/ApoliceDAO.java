@@ -1,7 +1,5 @@
 package br.edu.cs.poo.ac.seguro.daos;
 
-import java.io.Serializable;
-
 import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 import br.edu.cs.poo.ac.seguro.entidades.Apolice;
 

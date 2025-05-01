@@ -1,9 +1,7 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
 import java.io.File;
-
 import org.junit.jupiter.api.BeforeEach;
-
 import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 
 public abstract class TesteAbstrato {

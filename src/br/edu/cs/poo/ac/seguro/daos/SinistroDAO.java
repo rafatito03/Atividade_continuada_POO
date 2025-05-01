@@ -31,4 +31,13 @@ public class SinistroDAO extends DAOGenerico {
 		cadastro.excluir(numero);
 		return true;
 	}
+	
+	public Sinistro[] buscarTodos() {
+		Serializable[] objetos = cadastro.buscarTodos();
+		Sinistro[] sinistros = new Sinistro[objetos.length];
+		for (int i = 0; i < objetos.length; i++) {
+			sinistros[i] = (Sinistro) objetos[i];
+		}
+		return sinistros;
+	}
 }

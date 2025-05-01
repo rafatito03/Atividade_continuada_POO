@@ -1,6 +1,5 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
@@ -10,7 +9,9 @@ import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
 import br.edu.cs.poo.ac.seguro.mediators.SeguradoEmpresaMediator;
 
 public class TesteSeguradoEmpresaMediator extends TesteMediator {
+	
 	private SeguradoEmpresaMediator med = SeguradoEmpresaMediator.getInstancia();	
+	
 	protected Class getClasse() {
 		return SeguradoEmpresa.class;
 	}

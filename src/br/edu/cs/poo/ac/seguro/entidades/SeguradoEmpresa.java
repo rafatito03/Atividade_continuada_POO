@@ -25,7 +25,7 @@ public class SeguradoEmpresa extends Segurado {
 		return faturamento;
 	}
 	
-	public boolean getEhLocadoraDeVeiculos() {
+	public boolean isLocadoraDeVeiculos() {
 		return ehLocadoraDeVeiculos;
 	}
 	
@@ -33,7 +33,7 @@ public class SeguradoEmpresa extends Segurado {
 		return getDataCriacao();
 	}
 	
-	public void SetDataAbertura(LocalDate dataAbertura) {
+	public void setDataAbertura(LocalDate dataAbertura) {
 		setDataCriacao(dataAbertura);
 	}
 	
