@@ -4,7 +4,7 @@ import br.edu.cs.poo.ac.seguro.entidades.Veiculo;
 
 import java.io.Serializable;
 
-public class VeiculoDAO extends DAOGenerico implements Serializable {
+public class VeiculoDAO extends DAOGenerico {
 	
 	public VeiculoDAO() {
 		cadastro = new CadastroObjetos(Veiculo.class);

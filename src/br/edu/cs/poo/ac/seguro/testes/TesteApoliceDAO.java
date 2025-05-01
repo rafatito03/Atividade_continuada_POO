@@ -30,10 +30,10 @@ public class TesteApoliceDAO extends TesteDAO {
 	}
 
 	@Test
-	public void teste01_buscarRetornaNull() {
+	public void teste01_buscarRetornaTrue() {
 		Apolice apolice = criarApolice("123");
 		Apolice resultado = dao.buscar(apolice.getNumero());
-		Assertions.assertNull(resultado);
+		Assertions.assertEquals("123", resultado.getNumero());
 	}
 
 	@Test

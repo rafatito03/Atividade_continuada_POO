@@ -5,7 +5,7 @@ import java.io.Serializable;
 import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 import br.edu.cs.poo.ac.seguro.entidades.Apolice;
 
-public class ApoliceDAO extends DAOGenerico implements Serializable {
+public class ApoliceDAO extends DAOGenerico {
     
     public ApoliceDAO() {
         cadastro = new CadastroObjetos(Apolice.class);

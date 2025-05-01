@@ -1,13 +1,12 @@
 package br.edu.cs.poo.ac.seguro.mediators;
 
-//import br.edu.cs.poo.ac.seguro.daos.SeguradoEmpresaDAO;
-import br.edu.cs.poo.ac.seguro.daos.SeguradoPessoaDAO;
+import br.edu.cs.poo.ac.seguro.daos.SeguradoEmpresaDAO;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
 
 public class SeguradoEmpresaMediator {
 	
 	SeguradoMediator seguradoMediator = new SeguradoMediator();
-	SeguradoPessoaDAO seguradoPessoaDAO = new SeguradoPessoaDAO();
+	SeguradoEmpresaDAO seguradoEmpresaDAO = new SeguradoEmpresaDAO();
 	
 	public String validarCnpj(String cnpj) {
 		return null;
@@ -16,9 +15,11 @@ public class SeguradoEmpresaMediator {
 		return null;
 	}
 	public String incluirSeguradoEmpresa(SeguradoEmpresa seg) {
+		validarSeguradoEmpresa(seg);
 		return null;
 	}
 	public String alterarSeguradoEmpresa(SeguradoEmpresa seg) {
+		validarSeguradoEmpresa(seg);
 		return null;
 	}
 	public String excluirSeguradoEmpresa(String cnpj) {

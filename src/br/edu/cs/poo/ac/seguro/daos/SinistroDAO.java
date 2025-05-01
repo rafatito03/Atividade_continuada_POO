@@ -4,7 +4,7 @@ import br.edu.cs.poo.ac.seguro.entidades.Sinistro;
 
 import java.io.Serializable;
 
-public class SinistroDAO extends DAOGenerico implements Serializable {
+public class SinistroDAO extends DAOGenerico {
 	
 	public SinistroDAO() {
 		cadastro = new CadastroObjetos(Sinistro.class);
