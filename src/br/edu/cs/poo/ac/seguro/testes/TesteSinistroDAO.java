@@ -15,7 +15,7 @@ import br.edu.cs.poo.ac.seguro.entidades.Veiculo;
 public class TesteSinistroDAO extends TesteDAO {
 	
 	private Veiculo veiculoTeste = new Veiculo("00000000", 2000, null, null, CategoriaVeiculo.BASICO);
-	private Sinistro sinistroTeste = new Sinistro("000", veiculoTeste, LocalDateTime.now(), LocalDateTime.now(), "fil", new BigDecimal(11111), TipoSinistro.getTipoSinistro(1));
+	private Sinistro sinistroTeste = new Sinistro(veiculoTeste, LocalDateTime.now(), LocalDateTime.now(), "fil", new BigDecimal(11111), TipoSinistro.getTipoSinistro(1));
 	
 	private SinistroDAO dao = new SinistroDAO();
 	
@@ -78,7 +78,7 @@ public class TesteSinistroDAO extends TesteDAO {
 	@Test
 	public void teste08() {
 		cadastro.incluir(sinistroTeste, sinistroTeste.getNumero());
-		Sinistro si = new Sinistro("000", veiculoTeste, LocalDateTime.now(), LocalDateTime.now(), "fil", new BigDecimal(22222), TipoSinistro.getTipoSinistro(1));
+		Sinistro si = new Sinistro(veiculoTeste, LocalDateTime.now(), LocalDateTime.now(), "fil", new BigDecimal(22222), TipoSinistro.getTipoSinistro(1));
 		boolean ret = dao.alterar(si);
 		Assertions.assertTrue(ret);
 	}
