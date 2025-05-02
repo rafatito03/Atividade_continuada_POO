@@ -34,9 +34,6 @@ public class ApoliceMediator {
 	 * Algumas regras de validação e lógicas devem ser inferidas através da leitura e 
 	 * do entendimento dos testes automatizados. Seguem abaixo explicações pertinentes
 	 * e necessárias ao entendimento completo de como este método deve funcionar.
-	 * 
-	 *  Toda vez que um retorno contiver uma mensagem de erro não nula, significando
-	 *  que a apólice não foi incluída, o numero da apólice no retorno deve ser nulo.
 	 *  
 	 *  Toda vez que um retorno contiver uma mensagem de erro não nula, significando
 	 *  que a apólice não foi incluída, o numero da apólice no retorno deve ser nulo.
@@ -69,7 +66,7 @@ public class ApoliceMediator {
 	 * Se o veículo existir, realizar as validações de cpf/cnpj e de valor máximo, e a verificação
 	 * de apólice já existente (busca de apólice por número).
 	 * 
-	 * ASSOCIAÇÂO DE VEICULO COM SEGURADOS: buscar segurado empresa por CNPJ OU segura pessoa por CPF. 
+	 * ASSOCIAÇÃO DE VEICULO COM SEGURADOS: buscar segurado empresa por CNPJ OU segura pessoa por CPF. 
 	 * Se não for encontrado, retornar mensagem de erro, Se for encontrado, associar ao veículo. 
 	 * 
 	 * Se o veículo não existir (busca no dao de veículos por placa), ele deve ser incluído 
@@ -100,12 +97,14 @@ public class ApoliceMediator {
 	 */
 	public RetornoInclusaoApolice incluirApolice(DadosVeiculo dados) {
 		
+		
 		return null;
 	}
 	/*
 	 * Ver os testes test19 e test20
 	 */
 	public Apolice buscarApolice(String numero) {
+		
 		return null;
 	}
 	/*

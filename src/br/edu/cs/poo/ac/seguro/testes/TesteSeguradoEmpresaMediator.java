@@ -12,7 +12,7 @@ public class TesteSeguradoEmpresaMediator extends TesteMediator {
 	
 	private SeguradoEmpresaMediator med = SeguradoEmpresaMediator.getInstancia();	
 	
-	protected Class getClasse() {
+	protected Class<?> getClasse() {
 		return SeguradoEmpresa.class;
 	}
 	
@@ -40,7 +40,7 @@ public class TesteSeguradoEmpresaMediator extends TesteMediator {
 		assertEquals(null, ret);
 	}
 	@Test
-	public void test05() {		
+	public void test05() {
 		String msg = "Faturamento deve ser maior que zero";
 		String ret = med.validarFaturamento(-10.0);
 		assertEquals(msg, ret);

@@ -19,7 +19,7 @@ public class TesteSinistroDAO extends TesteDAO {
 	
 	private SinistroDAO dao = new SinistroDAO();
 	
-	protected Class getClasse() {
+	protected Class<Sinistro> getClasse() {
 		return Sinistro.class;
 	}
 	

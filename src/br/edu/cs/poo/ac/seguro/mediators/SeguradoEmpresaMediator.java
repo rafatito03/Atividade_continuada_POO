@@ -15,34 +15,45 @@ public class SeguradoEmpresaMediator {
     }
 
     public String validarCnpj(String cnpj) {
-        if (ValidadorCpfCnpj.ehCnpjValido(cnpj)) return null;
-        return "CNPJ inválido.";
+        return ValidadorCpfCnpj.ehCnpjValido(cnpj);
     }
 
     public String validarFaturamento(double faturamento) {
-        if (faturamento <= 0) return "Faturamento deve ser maior que zero.";
+        if (faturamento <= 0) return "Faturamento deve ser maior que zero";
         return null;
     }
 
     public String incluirSeguradoEmpresa(SeguradoEmpresa seg) {
         String erro = validarSeguradoEmpresa(seg);
         if (erro != null) return erro;
+
+        if (seguradoEmpresaDAO.buscar(seg.getCnpj()) != null) {
+            return "CNPJ do segurado empresa já existente";
+        }
+
         seguradoEmpresaDAO.incluir(seg);
-        return "Segurado empresa incluído com sucesso.";
+        return null;
     }
 
     public String alterarSeguradoEmpresa(SeguradoEmpresa seg) {
         String erro = validarSeguradoEmpresa(seg);
         if (erro != null) return erro;
+        if (seguradoEmpresaDAO.buscar(seg.getCnpj()) == null) {
+            return "CNPJ do segurado empresa não existente";
+        }
+
         seguradoEmpresaDAO.alterar(seg);
-        return "Segurado empresa alterado com sucesso.";
+        return null;
     }
 
     public String excluirSeguradoEmpresa(String cnpj) {
         String erro = validarCnpj(cnpj);
         if (erro != null) return erro;
+        if (seguradoEmpresaDAO.buscar(cnpj) == null) {
+            return "CNPJ do segurado empresa não existente";
+        }
         seguradoEmpresaDAO.excluir(cnpj);
-        return "Segurado empresa excluído com sucesso.";
+        return null;
     }
 
     public SeguradoEmpresa buscarSeguradoEmpresa(String cnpj) {
@@ -58,6 +69,7 @@ public class SeguradoEmpresaMediator {
 
         if ((erro = mediator.validarNome(seg.getNome())) != null) return erro;
         if ((erro = mediator.validarEndereco(seg.getEndereco())) != null) return erro;
+        if ((erro = mediator.validarDataCriacao(seg.getDataAbertura())) != null) return erro;
 
         return null;
     }

@@ -5,13 +5,11 @@ import java.io.File;
 import org.junit.jupiter.api.BeforeEach;
 
 import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
-//import br.edu.cs.poo.ac.seguro.daos.SeguradoEmpresaDAO;
-//import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
 
 public abstract class TesteDAO extends TesteAbstrato {
 	protected CadastroObjetos cadastro;
 	
-	protected abstract Class getClasse();
+	protected abstract Class<?> getClasse();
 	
 	protected TesteDAO() {
 		cadastro = new CadastroObjetos(getClasse());

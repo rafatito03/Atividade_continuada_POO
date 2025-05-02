@@ -13,6 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class Apolice implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String numero; // Não pegar no construtor
 	private Veiculo veiculo;
 	private BigDecimal valorFranquia;

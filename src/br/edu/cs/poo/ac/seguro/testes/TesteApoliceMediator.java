@@ -449,7 +449,7 @@ public class TesteApoliceMediator extends TesteMediator {
 		Assertions.assertEquals(null, msg);
 	}
 	@Override
-	protected Class getClasse() {
+	protected Class<?> getClasse() {
 		return Apolice.class;
 	}
 }

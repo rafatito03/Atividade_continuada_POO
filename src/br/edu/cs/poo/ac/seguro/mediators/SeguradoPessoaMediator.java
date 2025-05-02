@@ -15,14 +15,31 @@ public class SeguradoPessoaMediator {
     }
 
     public String validarCpf(String cpf) {
-        if (!ValidadorCpfCnpj.ehCpfValido(cpf))
-            return "CPF inválido.";
-        return null;
+        
+        if (cpf == null || cpf.trim().isEmpty()) {
+            return "CPF deve ser informado";
+        }
+
+        
+        cpf = cpf.replaceAll("[^0-9]", "");
+
+        
+        if (cpf.length() != 11) {
+            return "CPF deve ter 11 caracteres";
+        }
+
+       
+        if (!ValidadorCpfCnpj.ehCpfValido(cpf)) {
+            return "CPF com dígito inválido"; 
+        }
+
+        return null; 
     }
 
     public String validarRenda(double renda) {
-        if (renda <= 0)
-            return "Renda deve ser maior que zero.";
+        if (renda < 0) { 
+            return "Renda deve ser maior ou igual à zero";
+        }
         return null;
     }
 
@@ -30,24 +47,39 @@ public class SeguradoPessoaMediator {
         String erro = validarSeguradoPessoa(seg);
         if (erro != null) 
             return erro;
+        if (seguradoPessoaDAO.buscar(seg.getCpf()) != null) {
+            return "CPF do segurado pessoa já existente";
+        }
+
         seguradoPessoaDAO.incluir(seg);
-        return "Segurado incluído com sucesso.";
+        return null;
     }
 
     public String alterarSeguradoPessoa(SeguradoPessoa seg) {
         String erro = validarSeguradoPessoa(seg);
         if (erro != null) 
             return erro;
+        if (seguradoPessoaDAO.buscar(seg.getCpf()) == null) {
+            return "CPF do segurado pessoa não existente";
+        }
         seguradoPessoaDAO.alterar(seg);
-        return "Segurado alterado com sucesso.";
+        return null;
     }
 
     public String excluirSeguradoPessoa(String cpf) {
+        
+        if (seguradoPessoaDAO.buscar(cpf) == null) {
+            return "CPF do segurado pessoa não existente";
+        }
+
+        
         String erro = validarCpf(cpf);
-        if (erro != null) 
+        if (erro != null) {
             return erro;
+        }
+
         seguradoPessoaDAO.excluir(cpf);
-        return "Segurado excluído com sucesso.";
+        return null; 
     }
 
     public SeguradoPessoa buscarSeguradoPessoa(String cpf) {
