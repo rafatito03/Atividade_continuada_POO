@@ -5,24 +5,29 @@ public class ValidadorCpfCnpj {
 	private static final int[] PESO_CPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 	
 	private static boolean validarDigitosCnpj(String cnpj) {
-        int[] weights1 = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
-        int[] weights2 = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+	    if (cnpj == null || cnpj.length() != 14) {
+	        return false;
+	    }
 
-        int sum = 0;
-        for (int i = 0; i < 12; i++) {
-            sum += (cnpj.charAt(i) - '0') * weights1[i];
-        }
-        int digit1 = (sum % 11 < 2) ? 0 : 11 - (sum % 11);
+	    int[] weights1 = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+	    int[] weights2 = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
 
-        sum = 0;
-        for (int i = 0; i < 13; i++) {
-            sum += (cnpj.charAt(i) - '0') * weights2[i];
-        }
-        int digit2 = (sum % 11 < 2) ? 0 : 11 - (sum % 11);
+	    int sum = 0;
+	    for (int i = 0; i < 12; i++) {
+	        sum += (cnpj.charAt(i) - '0') * weights1[i];
+	    }
+	    int digit1 = (sum % 11 < 2) ? 0 : 11 - (sum % 11);
 
-        return (digit1 == Character.getNumericValue(cnpj.charAt(12))) &&
-               (digit2 == Character.getNumericValue(cnpj.charAt(13)));
-    }
+	    sum = 0;
+	    for (int i = 0; i < 12; i++) {
+	        sum += (cnpj.charAt(i) - '0') * weights2[i];
+	    }
+	    sum += digit1 * weights2[12];
+	    int digit2 = (sum % 11 < 2) ? 0 : 11 - (sum % 11);
+
+	    return (digit1 == Character.getNumericValue(cnpj.charAt(12))) &&
+	           (digit2 == Character.getNumericValue(cnpj.charAt(13)));
+	}
 	
 	public static String ehCnpjValido(String cnpj) {
 		if (StringUtils.ehNuloOuBranco(cnpj)) return "CNPJ deve ser informado";

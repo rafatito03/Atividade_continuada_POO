@@ -17,7 +17,7 @@ import br.edu.cs.poo.ac.seguro.mediators.SeguradoPessoaMediator;
 public class TesteSeguradoPessoaMediator extends TesteMediator {
 	private SeguradoPessoaMediator med = SeguradoPessoaMediator.getInstancia();
 	@Override
-	protected Class getClasse() {
+	protected Class<?> getClasse() {
 		return SeguradoPessoa.class;
 	}
 

@@ -15,31 +15,62 @@ public class SeguradoMediator {
     public String validarNome(String nome) {
         if (StringUtils.ehNuloOuBranco(nome)) return "Nome deve ser informado";
         if (StringUtils.temSomenteNumeros(nome)) return "Nome não pode conter apenas números.";
+        if (nome.length()>100) return "Tamanho do nome deve ser no máximo 100 caracteres";
         return null;
     }
 
     public String validarEndereco(Endereco endereco) {
-        if (endereco == null) return "Endereço deve ser informado";
-
-        if (StringUtils.ehNuloOuBranco(endereco.getCep())) return "CEP é obrigatório.";
-        if (!StringUtils.temSomenteNumeros(endereco.getCep())) return "CEP deve conter apenas números.";
-
-        if (StringUtils.ehNuloOuBranco(endereco.getCidade())) return "Cidade é obrigatória.";
-        if (StringUtils.ehNuloOuBranco(endereco.getComplemento())) return "Complemento é obrigatório.";
-
-        if (StringUtils.ehNuloOuBranco(endereco.getEstado())) return "Estado é obrigatório.";
-
-        if (StringUtils.ehNuloOuBranco(endereco.getLogradouro())) return "Logradouro é obrigatório.";
-
-        if (StringUtils.ehNuloOuBranco(endereco.getPais())) return "País é obrigatório.";
+        if (endereco == null) 
+            return "Endereço deve ser informado";
+        
+        if (StringUtils.ehNuloOuBranco(endereco.getLogradouro())) 
+            return "Logradouro deve ser informado";
+        
+        if (StringUtils.ehNuloOuBranco(endereco.getCep())) 
+            return "CEP deve ser informado";
+        if (!StringUtils.temSomenteNumeros(endereco.getCep())) 
+            return "CEP deve ter formato NNNNNNNN";
+        if (endereco.getCep().length() != 8)
+            return "Tamanho do CEP deve ser 8 caracteres";
+        
+        if (StringUtils.ehNuloOuBranco(endereco.getCidade())) 
+            return "Cidade deve ser informada";
+        if (endereco.getCidade().length() > 100)
+            return "Tamanho da cidade deve ser no máximo 100 caracteres";
+        
+        if (StringUtils.ehNuloOuBranco(endereco.getEstado())) 
+            return "Sigla do estado deve ser informada";
+        if (endereco.getEstado().length() != 2)
+            return "Tamanho da sigla do estado deve ser 2 caracteres";
+        
+        if (StringUtils.ehNuloOuBranco(endereco.getPais())) 
+            return "País deve ser informado";
+        
+        if (endereco.getPais().length() > 40)
+            return "Tamanho do país deve ser no máximo 40 caracteres";
+        
+        if (endereco.getNumero() != null && endereco.getNumero().length() > 20)
+            return "Tamanho do número deve ser no máximo 20 caracteres";
+        
+        if (endereco.getComplemento() != null && endereco.getComplemento().length() > 30)
+            return "Tamanho do complemento deve ser no máximo 30 caracteres";
+        
         return null;
     }
 
     public String validarDataCriacao(LocalDate dataCriacao) {
-        if(dataCriacao == null) return "Data do nascimento deve ser informada";
+        if(dataCriacao == null) return "Data da abertura deve ser informada";
+        if (dataCriacao.isAfter(LocalDate.now())) return "Data da criação deve ser menor ou igual à data atual";
         return null;
     }
     public BigDecimal ajustarDebitoBonus(BigDecimal bonus, BigDecimal valorDebito) {
-        return null;
+        if (bonus == null || valorDebito == null) {
+            throw new IllegalArgumentException("Neither bonus nor valorDebito can be null");
+        }
+        if (bonus.compareTo(valorDebito) <= 0) {
+            return bonus;
+        } else {
+            return valorDebito;
+        }
     }
 }
