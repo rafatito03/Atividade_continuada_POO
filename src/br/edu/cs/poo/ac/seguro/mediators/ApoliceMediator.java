@@ -131,7 +131,7 @@ public class ApoliceMediator {
     }
 
     public Apolice buscarApolice(String numero) {
-        return null;
+    	return daoApo.buscar(numero);
     }
 
     public String excluirApolice(String numero) {

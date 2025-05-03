@@ -1,5 +1,6 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
@@ -9,10 +10,8 @@ import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
 import br.edu.cs.poo.ac.seguro.mediators.SeguradoEmpresaMediator;
 
 public class TesteSeguradoEmpresaMediator extends TesteMediator {
-	
 	private SeguradoEmpresaMediator med = SeguradoEmpresaMediator.getInstancia();	
-	
-	protected Class<?> getClasse() {
+	protected Class getClasse() {
 		return SeguradoEmpresa.class;
 	}
 	
@@ -40,7 +39,7 @@ public class TesteSeguradoEmpresaMediator extends TesteMediator {
 		assertEquals(null, ret);
 	}
 	@Test
-	public void test05() {
+	public void test05() {		
 		String msg = "Faturamento deve ser maior que zero";
 		String ret = med.validarFaturamento(-10.0);
 		assertEquals(msg, ret);

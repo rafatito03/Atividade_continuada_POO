@@ -10,13 +10,10 @@ import br.edu.cs.poo.ac.seguro.daos.SeguradoEmpresaDAO;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
 
 public class TesteSeguradoEmpresaDAO extends TesteDAO {
-
-    private SeguradoEmpresaDAO dao = new SeguradoEmpresaDAO();
-
-    @Override
-    protected Class<?> getClasse() {
-        return SeguradoEmpresa.class;
-    }
+	private SeguradoEmpresaDAO dao = new SeguradoEmpresaDAO();
+	protected Class getClasse() {
+		return SeguradoEmpresa.class;
+	}
 	
 	@Test
 	public void teste01() {

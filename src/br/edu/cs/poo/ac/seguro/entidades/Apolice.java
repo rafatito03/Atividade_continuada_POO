@@ -11,22 +11,30 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-
 public class Apolice implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private String numero; // Não pegar no construtor
-	private Veiculo veiculo;
-	private BigDecimal valorFranquia;
-	private BigDecimal valorPremio;
-	private BigDecimal valorMaximoSegurado;
-	private LocalDate dataInicioVigencia;
-	private LocalDate dataFimVigencia;
-	
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-	
-	public String getNumero() {
-		return numero;
-	}
+    private static final long serialVersionUID = 1L;
+
+    private String numero;
+    private Veiculo veiculo;
+    private BigDecimal valorFranquia;
+    private BigDecimal valorPremio;
+    private BigDecimal valorMaximoSegurado;
+    private LocalDate dataInicioVigencia;
+    private LocalDate dataFimVigencia;
+
+    public Apolice(String numero,
+                   Veiculo veiculo,
+                   BigDecimal valorFranquia,
+                   BigDecimal valorPremio,
+                   BigDecimal valorMaximoSegurado,
+                   LocalDate dataInicioVigencia) {
+
+        this(numero,
+             veiculo,
+             valorFranquia,
+             valorPremio,
+             valorMaximoSegurado,
+             dataInicioVigencia,
+             null);
+    }
 }

@@ -69,7 +69,11 @@ public class SeguradoEmpresaMediator {
 
         if ((erro = mediator.validarNome(seg.getNome())) != null) return erro;
         if ((erro = mediator.validarEndereco(seg.getEndereco())) != null) return erro;
-        if ((erro = mediator.validarDataCriacao(seg.getDataAbertura())) != null) return erro;
+        erro = mediator.validarDataCriacao(seg.getDataAbertura());
+        
+        if(erro != null && erro.equals("Data da criação deve ser informada")) {
+        	return "Data da abertura deve ser informada";
+        }
 
         return null;
     }

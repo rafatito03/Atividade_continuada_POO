@@ -1,8 +1,6 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
 
-import java.io.Serializable;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,10 +8,9 @@ import br.edu.cs.poo.ac.seguro.daos.VeiculoDAO;
 import br.edu.cs.poo.ac.seguro.entidades.CategoriaVeiculo;
 import br.edu.cs.poo.ac.seguro.entidades.Veiculo;
 
-public class TesteVeiculoDAO extends TesteDAO implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class TesteVeiculoDAO extends TesteDAO {
 	private VeiculoDAO dao = new VeiculoDAO();
-	protected Class<Veiculo> getClasse() {
+	protected Class getClasse() {
 		return Veiculo.class;
 	}
 	

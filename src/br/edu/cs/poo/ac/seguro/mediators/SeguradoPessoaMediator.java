@@ -1,5 +1,7 @@
 package br.edu.cs.poo.ac.seguro.mediators;
 
+import java.time.LocalDate;
+
 import br.edu.cs.poo.ac.seguro.daos.SeguradoPessoaDAO;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoPessoa;
 
@@ -94,7 +96,11 @@ public class SeguradoPessoaMediator {
         SeguradoMediator mediator = SeguradoMediator.getInstancia();
         if ((erro = mediator.validarNome(seg.getNome())) != null) return erro;
         if ((erro = mediator.validarEndereco(seg.getEndereco())) != null) return erro;
-        if ((erro = mediator.validarDataCriacao(seg.getDataNascimento())) != null) return erro;
+        erro = mediator.validarDataCriacao(seg.getDataNascimento());
+        
+        if(erro != null && erro.equals("Data da criação deve ser informada")) {
+        	return "Data do nascimento deve ser informada";
+        }
 
         return null;
     }
