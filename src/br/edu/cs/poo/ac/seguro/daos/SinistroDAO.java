@@ -3,6 +3,7 @@ import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 import br.edu.cs.poo.ac.seguro.entidades.Sinistro;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class SinistroDAO extends DAOGenerico {
 	
@@ -31,6 +32,11 @@ public class SinistroDAO extends DAOGenerico {
 		cadastro.excluir(numero);
 		return true;
 	}
+    public Sinistro[] listarPorApolice(String numeroApolice) {
+        return Arrays.stream(buscarTodos())
+                     .filter(s -> s.getNumero().equals(numeroApolice))
+                     .toArray(Sinistro[]::new);
+    }
 	
 	public Sinistro[] buscarTodos() {
 		Serializable[] objetos = cadastro.buscarTodos();
