@@ -49,7 +49,7 @@ public class SeguradoPessoaMediator {
         String erro = validarSeguradoPessoa(seg);
         if (erro != null) 
             return erro;
-        if (seguradoPessoaDAO.buscar(seg.getIdentificador()) != null) {
+        if (seguradoPessoaDAO.buscar(seg.getIdUnico()) != null) {
             return "CPF do segurado pessoa já existente";
         }
 
@@ -61,7 +61,7 @@ public class SeguradoPessoaMediator {
         String erro = validarSeguradoPessoa(seg);
         if (erro != null) 
             return erro;
-        if (seguradoPessoaDAO.buscar(seg.getIdentificador()) == null) {
+        if (seguradoPessoaDAO.buscar(seg.getIdUnico()) == null) {
             return "CPF do segurado pessoa não existente";
         }
         seguradoPessoaDAO.alterar(seg);
@@ -90,7 +90,7 @@ public class SeguradoPessoaMediator {
 
     public String validarSeguradoPessoa(SeguradoPessoa seg) {
         String erro;
-        if ((erro = validarCpf(seg.getIdentificador())) != null) return erro;
+        if ((erro = validarCpf(seg.getIdUnico())) != null) return erro;
         if ((erro = validarRenda(seg.getRenda())) != null) return erro;
 
         SeguradoMediator mediator = SeguradoMediator.getInstancia();

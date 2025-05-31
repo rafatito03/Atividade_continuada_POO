@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 
-public abstract class Segurado implements Serializable {
+public abstract class Segurado implements Registro {
 	private static final long serialVersionUID = 1L;
 	private String nome;
     private Endereco endereco;
@@ -19,7 +19,6 @@ public abstract class Segurado implements Serializable {
             this.bonus = bonus != null ? bonus : BigDecimal.ZERO;
         }
     public abstract boolean isEmpresa();
-    public abstract String getIdentificador();
 
     public String getNome() {
         return nome;

@@ -3,7 +3,7 @@ package br.edu.cs.poo.ac.seguro.entidades;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class SeguradoPessoa extends Segurado {
+public class SeguradoPessoa extends Segurado implements Registro{
 	private static final long serialVersionUID = 1L;
 	private String cpf;
 	private double renda;
@@ -14,7 +14,7 @@ public class SeguradoPessoa extends Segurado {
 		this.renda = renda;
 	}
 	
-	public String getIdentificador() {
+	public String getIdUnico() {
 		return cpf;
 	}
 	

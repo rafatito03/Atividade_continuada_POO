@@ -14,18 +14,18 @@ public class SeguradoEmpresaDAO extends DAOGenerico {
     }
 
     public boolean incluir(SeguradoEmpresa segurado) {
-        if (buscar(segurado.getCnpj()) != null) {
+        if (buscar(segurado.getIdUnico()) != null) {
             return false; 
         }
-        cadastro.incluir(segurado, segurado.getCnpj());
+        cadastro.incluir(segurado, segurado.getIdUnico());
         return true;
     }
 
     public boolean alterar(SeguradoEmpresa segurado) {
-        if (buscar(segurado.getCnpj()) == null) {
+        if (buscar(segurado.getIdUnico()) == null) {
             return false; 
         }
-        cadastro.alterar(segurado, segurado.getCnpj());
+        cadastro.alterar(segurado, segurado.getIdUnico());
         return true;
     }
 

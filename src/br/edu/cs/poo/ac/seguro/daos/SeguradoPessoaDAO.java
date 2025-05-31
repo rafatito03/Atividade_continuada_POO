@@ -14,18 +14,18 @@ public class SeguradoPessoaDAO extends DAOGenerico {
 	}
 	
 	public boolean incluir(SeguradoPessoa segurado) {
-		if (buscar(segurado.getCpf()) != null) {
+		if (buscar(segurado.getIdUnico()) != null) {
 			return false;
 		} else {
-			cadastro.incluir(segurado, segurado.getCpf());
+			cadastro.incluir(segurado, segurado.getIdUnico());
 			return true;
 		}
 	}
 	public boolean alterar(SeguradoPessoa segurado) {
-		if (buscar(segurado.getCpf()) == null) {
+		if (buscar(segurado.getIdUnico()) == null) {
 			return false;
 		} else {
-			cadastro.alterar(segurado, segurado.getCpf());
+			cadastro.alterar(segurado, segurado.getIdUnico());
 			return true;
 		}
 	}

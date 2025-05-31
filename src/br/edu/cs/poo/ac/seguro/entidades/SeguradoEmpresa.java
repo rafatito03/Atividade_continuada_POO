@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class SeguradoEmpresa extends Segurado implements Serializable {
+public class SeguradoEmpresa extends Segurado implements Registro {
 	private static final long serialVersionUID = 1L;
 	private String cnpj;
 	private double faturamento;
@@ -17,8 +17,8 @@ public class SeguradoEmpresa extends Segurado implements Serializable {
 		this.faturamento = faturamento;
 		this.ehLocadoraDeVeiculos = ehLocadoraDeVeiculos;
 	}
-	
-	public String getIdentificador() {
+	@Override
+	public String getIdUnico() {
 		return cnpj;
 	}
 	

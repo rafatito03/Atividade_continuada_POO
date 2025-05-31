@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Apolice implements Serializable {
+public class Apolice implements Registro{
     private static final long serialVersionUID = 1L;
 
     private String numero;
@@ -36,5 +36,10 @@ public class Apolice implements Serializable {
              valorMaximoSegurado,
              dataInicioVigencia,
              null);
+
+    }
+    @Override
+    public String getIdUnico() {
+    	return numero;
     }
 }

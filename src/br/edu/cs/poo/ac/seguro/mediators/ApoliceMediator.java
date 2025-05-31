@@ -75,7 +75,7 @@ public class ApoliceMediator {
         Veiculo veiculo = daoVel.buscar(dados.getPlaca());
         if (veiculo != null) {
        	 		boolean validOwner = veiculo.getProprietario() != null && 
-                veiculo.getProprietario().getIdentificador().equals(dados.getCpfOuCnpj());
+                veiculo.getProprietario().getIdUnico().equals(dados.getCpfOuCnpj());
             if (!validOwner) {
             	veiculo.setProprietario(seg);
                 daoVel.alterar(veiculo);

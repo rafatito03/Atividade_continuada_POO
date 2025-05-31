@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 
-public class Sinistro implements Serializable {
+public class Sinistro implements Registro {
 	private static final long serialVersionUID = 1L;
 	private String numero; // Não pegar no construtor
 	private Veiculo veiculo;
@@ -27,6 +27,9 @@ public class Sinistro implements Serializable {
 	}
 	
 	public String getNumero() {
+		return numero;
+	}
+	public String getIdUnico() {
 		return numero;
 	}
 }

@@ -10,10 +10,15 @@ import lombok.AllArgsConstructor;
 @Setter
 @AllArgsConstructor
 
-public class Veiculo implements Serializable{
+public class Veiculo implements Registro{
 	private static final long serialVersionUID = 1L;
 	private String placa;
 	private int ano;
 	private Segurado proprietario;
 	private CategoriaVeiculo categoria;
+	
+	@Override
+	public String getIdUnico() {
+		return placa;
+	}
 }
