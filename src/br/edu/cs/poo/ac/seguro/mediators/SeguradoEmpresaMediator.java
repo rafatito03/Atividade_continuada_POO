@@ -27,7 +27,7 @@ public class SeguradoEmpresaMediator {
         String erro = validarSeguradoEmpresa(seg);
         if (erro != null) return erro;
 
-        if (seguradoEmpresaDAO.buscar(seg.getCnpj()) != null) {
+        if (seguradoEmpresaDAO.buscar(seg.getIdentificador()) != null) {
             return "CNPJ do segurado empresa já existente";
         }
 
@@ -38,7 +38,7 @@ public class SeguradoEmpresaMediator {
     public String alterarSeguradoEmpresa(SeguradoEmpresa seg) {
         String erro = validarSeguradoEmpresa(seg);
         if (erro != null) return erro;
-        if (seguradoEmpresaDAO.buscar(seg.getCnpj()) == null) {
+        if (seguradoEmpresaDAO.buscar(seg.getIdentificador()) == null) {
             return "CNPJ do segurado empresa não existente";
         }
 
@@ -62,7 +62,7 @@ public class SeguradoEmpresaMediator {
 
     public String validarSeguradoEmpresa(SeguradoEmpresa seg) {
         String erro;
-        if ((erro = validarCnpj(seg.getCnpj())) != null) return erro;
+        if ((erro = validarCnpj(seg.getIdentificador())) != null) return erro;
         if ((erro = validarFaturamento(seg.getFaturamento())) != null) return erro;
 
         SeguradoMediator mediator = SeguradoMediator.getInstancia();

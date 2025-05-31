@@ -5,19 +5,21 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Segurado implements Serializable {
+public abstract class Segurado implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String nome;
     private Endereco endereco;
     private LocalDate dataCriacao;
     private BigDecimal bonus;
 
-       public Segurado(String nome, Endereco endereco, LocalDate dataCriacao, BigDecimal bonus) {
+    public Segurado(String nome, Endereco endereco, LocalDate dataCriacao, BigDecimal bonus) {
             this.nome = nome;
             this.endereco = endereco;
             this.dataCriacao = dataCriacao;
             this.bonus = bonus != null ? bonus : BigDecimal.ZERO;
         }
+    public abstract boolean isEmpresa();
+    public abstract String getIdentificador();
 
     public String getNome() {
         return nome;

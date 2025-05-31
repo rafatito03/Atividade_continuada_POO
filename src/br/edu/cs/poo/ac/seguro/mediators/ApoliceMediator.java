@@ -3,7 +3,6 @@ package br.edu.cs.poo.ac.seguro.mediators;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,17 +74,14 @@ public class ApoliceMediator {
 
         Veiculo veiculo = daoVel.buscar(dados.getPlaca());
         if (veiculo != null) {
-            boolean validOwner = isEmpresa ?
-                veiculo.getProprietarioEmpresa() != null && veiculo.getProprietarioEmpresa().getCnpj().equals(dados.getCpfOuCnpj()) :
-                veiculo.getProprietarioPessoa() != null && veiculo.getProprietarioPessoa().getCpf().equals(dados.getCpfOuCnpj());
+       	 		boolean validOwner = veiculo.getProprietario() != null && 
+                veiculo.getProprietario().getIdentificador().equals(dados.getCpfOuCnpj());
             if (!validOwner) {
-                if (isEmpresa) veiculo.setProprietarioEmpresa((SeguradoEmpresa) seg);
-                else veiculo.setProprietarioPessoa((SeguradoPessoa) seg);
+            	veiculo.setProprietario(seg);
                 daoVel.alterar(veiculo);
             }
         } else {
-            veiculo = new Veiculo(dados.getPlaca(), dados.getAno(), isEmpresa ? (SeguradoEmpresa) seg : null,
-                                  !isEmpresa ? (SeguradoPessoa) seg : null, categoria);
+        	veiculo = new Veiculo(dados.getPlaca(), dados.getAno(), seg, categoria);
             daoVel.incluir(veiculo);
         }
 
@@ -131,7 +127,7 @@ public class ApoliceMediator {
     }
 
     public Apolice buscarApolice(String numero) {
-    	return daoApo.buscar(numero);
+        return daoApo.buscar(numero);
     }
 
     public String excluirApolice(String numero) {

@@ -14,7 +14,7 @@ public class SeguradoPessoa extends Segurado {
 		this.renda = renda;
 	}
 	
-	public String getCpf() {
+	public String getIdentificador() {
 		return cpf;
 	}
 	
@@ -29,4 +29,8 @@ public class SeguradoPessoa extends Segurado {
 	public void setDataNascimento(LocalDate dataAbertura) {
 		setDataCriacao(dataAbertura);
 	}
+	@Override
+    public boolean isEmpresa() {
+        return false;  
+    }
 }

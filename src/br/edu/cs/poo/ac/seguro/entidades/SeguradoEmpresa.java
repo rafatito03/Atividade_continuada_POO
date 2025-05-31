@@ -18,7 +18,7 @@ public class SeguradoEmpresa extends Segurado implements Serializable {
 		this.ehLocadoraDeVeiculos = ehLocadoraDeVeiculos;
 	}
 	
-	public String getCnpj() {
+	public String getIdentificador() {
 		return cnpj;
 	}
 	
@@ -37,5 +37,9 @@ public class SeguradoEmpresa extends Segurado implements Serializable {
 	public void setDataAbertura(LocalDate dataAbertura) {
 		setDataCriacao(dataAbertura);
 	}
+	@Override
+	public boolean isEmpresa() {
+        return true;  
+    }
 	
 }
