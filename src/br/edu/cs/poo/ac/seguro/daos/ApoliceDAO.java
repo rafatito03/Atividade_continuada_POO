@@ -1,42 +1,44 @@
 package br.edu.cs.poo.ac.seguro.daos;
 
-import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 import br.edu.cs.poo.ac.seguro.entidades.Apolice;
 
-public class ApoliceDAO extends DAOGenerico {
-    
+public class ApoliceDAO extends DAOGenerico<Apolice> {
+
     public ApoliceDAO() {
-        cadastro = new CadastroObjetos(Apolice.class);
+        super();
     }
 
+    @Override
+    public Class<Apolice> getClasseEntidade() {
+        return Apolice.class;
+    }
+
+    @Override
     public Apolice buscar(String numero) {
-        return (Apolice) cadastro.buscar(numero);
+        return super.buscar(numero);
     }
 
+    @Override
     public boolean incluir(Apolice apolice) {
-        if (buscar(apolice.getNumero()) != null) {
+        if (this.buscar(apolice.getNumero()) != null) {
             return false;
-        } else {
-            cadastro.incluir(apolice, apolice.getNumero());
-            return true;
         }
+        return super.incluir(apolice);
     }
 
+    @Override
     public boolean alterar(Apolice apolice) {
-        if (buscar(apolice.getNumero()) == null) {
+        if (this.buscar(apolice.getNumero()) == null) {
             return false;
-        } else {
-            cadastro.alterar(apolice, apolice.getNumero());
-            return true;
         }
+        return super.alterar(apolice);
     }
 
+    @Override
     public boolean excluir(String numero) {
-        if (buscar(numero) == null) {
+        if (this.buscar(numero) == null) {
             return false;
-        } else {
-            cadastro.excluir(numero);
-            return true;
         }
+        return super.excluir(numero);
     }
 }

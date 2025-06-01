@@ -1,32 +1,44 @@
 package br.edu.cs.poo.ac.seguro.daos;
-import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
+
 import br.edu.cs.poo.ac.seguro.entidades.Veiculo;
 
-public class VeiculoDAO extends DAOGenerico {
-	
-	public VeiculoDAO() {
-		cadastro = new CadastroObjetos(Veiculo.class);
-	}
-	
-	public Veiculo buscar(String placa) {
-		return (Veiculo)cadastro.buscar(placa);
-	}
-	
-	public boolean incluir(Veiculo veiculo) {
-		if(buscar(veiculo.getPlaca()) != null) return false;
-		cadastro.incluir(veiculo, veiculo.getPlaca());
-		return true;
-	}
-	
-	public boolean alterar(Veiculo veiculo) {
-		if(buscar(veiculo.getPlaca()) == null) return false;
-		cadastro.alterar(veiculo, veiculo.getPlaca());
-		return true;
-	}
-	
-	public boolean excluir(String placa) {
-		if(buscar(placa) == null) return false;
-		cadastro.excluir(placa);
-		return true;
-	}
+public class VeiculoDAO extends DAOGenerico<Veiculo> {
+
+    public VeiculoDAO() {
+        super();
+    }
+
+    @Override
+    public Class<Veiculo> getClasseEntidade() {
+        return Veiculo.class;
+    }
+
+    @Override
+    public Veiculo buscar(String placa) {
+        return super.buscar(placa);
+    }
+
+    @Override
+    public boolean incluir(Veiculo veiculo) {
+        if (this.buscar(veiculo.getPlaca()) != null) {
+            return false;
+        }
+        return super.incluir(veiculo);
+    }
+
+    @Override
+    public boolean alterar(Veiculo veiculo) {
+        if (this.buscar(veiculo.getPlaca()) == null) {
+            return false;
+        }
+        return super.alterar(veiculo);
+    }
+
+    @Override
+    public boolean excluir(String placa) {
+        if (this.buscar(placa) == null) {
+            return false;
+        }
+        return super.excluir(placa);
+    }
 }

@@ -1,49 +1,66 @@
 package br.edu.cs.poo.ac.seguro.daos;
-import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
-import br.edu.cs.poo.ac.seguro.entidades.Sinistro;
 
-import java.io.Serializable;
+import br.edu.cs.poo.ac.seguro.entidades.Sinistro;
+import br.edu.cs.poo.ac.seguro.entidades.Registro;
 import java.util.Arrays;
 
-public class SinistroDAO extends DAOGenerico {
-	
-	public SinistroDAO() {
-		cadastro = new CadastroObjetos(Sinistro.class);
-	}
-	
-	public Sinistro buscar(String numero) {
-		return (Sinistro)cadastro.buscar(numero);
-	}
-	
-	public boolean incluir(Sinistro sinistro) {
-		if(buscar(sinistro.getNumero()) != null) return false;
-		cadastro.incluir(sinistro, sinistro.getNumero());
-		return true;
-	}
-	
-	public boolean alterar(Sinistro sinistro) {
-		if(buscar(sinistro.getNumero()) == null) return false;
-		cadastro.alterar(sinistro, sinistro.getNumero());
-		return true;
-	}
-	
-	public boolean excluir(String numero) {
-		if(buscar(numero) == null) return false;
-		cadastro.excluir(numero);
-		return true;
-	}
+public class SinistroDAO extends DAOGenerico<Sinistro> {
+
+    public SinistroDAO() {
+        super();
+    }
+
+    @Override
+    public Class<Sinistro> getClasseEntidade() {
+        return Sinistro.class;
+    }
+
+    @Override
+    public Sinistro buscar(String numero) {
+        return super.buscar(numero);
+    }
+
+    @Override
+    public boolean incluir(Sinistro sinistro) {
+        if (this.buscar(sinistro.getNumero()) != null) {
+            return false;
+        }
+        return super.incluir(sinistro);
+    }
+
+    @Override
+    public boolean alterar(Sinistro sinistro) {
+        if (this.buscar(sinistro.getNumero()) == null) {
+            return false;
+        }
+        return super.alterar(sinistro);
+    }
+
+    @Override
+    public boolean excluir(String numero) {
+        if (this.buscar(numero) == null) {
+            return false;
+        }
+        return super.excluir(numero);
+    }
+
+    public Sinistro[] buscarTodos() {
+        Registro[] registros = super.buscarTodos();
+        Sinistro[] sinistros = new Sinistro[registros.length];
+        for (int i = 0; i < registros.length; i++) {
+            sinistros[i] = (Sinistro) registros[i];
+        }
+        return sinistros;
+    }
+
     public Sinistro[] listarPorApolice(String numeroApolice) {
         return Arrays.stream(buscarTodos())
-                     .filter(s -> s.getNumero().equals(numeroApolice))
+                     .filter(sinistro -> {
+                         if (sinistro.getNumero() != null) {
+                            return sinistro.getNumero().equals(numeroApolice);
+                         }
+                         return false;
+                     })
                      .toArray(Sinistro[]::new);
     }
-	
-	public Sinistro[] buscarTodos() {
-		Serializable[] objetos = cadastro.buscarTodos();
-		Sinistro[] sinistros = new Sinistro[objetos.length];
-		for (int i = 0; i < objetos.length; i++) {
-			sinistros[i] = (Sinistro) objetos[i];
-		}
-		return sinistros;
-	}
 }

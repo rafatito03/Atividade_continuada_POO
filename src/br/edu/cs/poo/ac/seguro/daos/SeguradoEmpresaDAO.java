@@ -1,39 +1,43 @@
 package br.edu.cs.poo.ac.seguro.daos;
 
-import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
+import br.edu.cs.poo.ac.seguro.entidades.Segurado;
 
-public class SeguradoEmpresaDAO extends DAOGenerico {
+public class SeguradoEmpresaDAO extends SeguradoDAO {
 
     public SeguradoEmpresaDAO() {
-        cadastro = new CadastroObjetos(SeguradoEmpresa.class);
+        super();
     }
 
-    public SeguradoEmpresa buscar(String cnpj) {
-        return (SeguradoEmpresa) cadastro.buscar(cnpj);
+    public SeguradoEmpresa buscar(String numero) {
+        Segurado segurado = super.buscar(numero);
+        if (segurado instanceof SeguradoEmpresa) {
+            return (SeguradoEmpresa) segurado;
+        }
+        return null;
     }
 
+    
     public boolean incluir(SeguradoEmpresa segurado) {
-        if (buscar(segurado.getIdUnico()) != null) {
-            return false; 
+        if (this.buscar(segurado.getIdUnico()) != null) {
+            return false;
         }
-        cadastro.incluir(segurado, segurado.getIdUnico());
-        return true;
+        return super.incluir(segurado);
     }
 
+    
     public boolean alterar(SeguradoEmpresa segurado) {
-        if (buscar(segurado.getIdUnico()) == null) {
-            return false; 
+        if (this.buscar(segurado.getIdUnico()) == null) {
+            return false;
         }
-        cadastro.alterar(segurado, segurado.getIdUnico());
-        return true;
+        return super.alterar(segurado);
     }
 
-    public boolean excluir(String cnpj) {
-        if (buscar(cnpj) == null) {
-            return false; 
+    
+    public boolean excluir(String numero) {
+        if (this.buscar(numero) == null) {
+            return false;
         }
-        cadastro.excluir(cnpj);
-        return true;
+        return super.excluir(numero);
     }
 }

@@ -1,16 +1,14 @@
 package br.edu.cs.poo.ac.seguro.entidades;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+
 
 public class Sinistro implements Registro {
 	private static final long serialVersionUID = 1L;
@@ -21,15 +19,22 @@ public class Sinistro implements Registro {
 	private String usuarioRegistro;
 	private BigDecimal valorSinistro;
 	private TipoSinistro tipo;
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+	private int sequencial;//n construtor
+	private String numeroApolice;//n construtor
 	
-	public String getNumero() {
-		return numero;
-	}
+	public Sinistro(Veiculo veiculo, LocalDateTime dataHoraSinistro,
+            LocalDateTime dataHoraRegistro, String usuarioRegistro,
+            BigDecimal valorSinistro, TipoSinistro tipo) {
+				this.veiculo = veiculo;
+				this.dataHoraSinistro = dataHoraSinistro;
+				this.dataHoraRegistro = dataHoraRegistro;
+				this.usuarioRegistro = usuarioRegistro;
+				this.valorSinistro = valorSinistro;
+				this.tipo = tipo;
+
+}
+
 	public String getIdUnico() {
-		return numero;
+		return getNumero();
 	}
 }
