@@ -140,7 +140,7 @@ public class TesteSeguradoPessoaMediator extends TesteMediator {
 				"Recife");
 		SeguradoPessoa seg = new SeguradoPessoa(" ", end, LocalDate.now(),
 				BigDecimal.ZERO, "07255431089", 1000.0);
-		cadastro.incluir(seg, seg.getCpf());
+		cadastro.incluir(seg, seg.getCpf());//aqui tambem era pra ser get IdUnico
 		String ret = med.alterarSeguradoPessoa(seg);
 		assertEquals("Nome deve ser informado", ret);
 		seg = new SeguradoPessoa("PAULA", null, LocalDate.now(),

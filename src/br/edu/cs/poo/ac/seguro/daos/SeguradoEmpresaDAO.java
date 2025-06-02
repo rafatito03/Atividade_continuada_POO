@@ -3,12 +3,15 @@ package br.edu.cs.poo.ac.seguro.daos;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
 import br.edu.cs.poo.ac.seguro.entidades.Segurado;
 
-public class SeguradoEmpresaDAO extends SeguradoDAO {
+public class SeguradoEmpresaDAO extends SeguradoDAO<SeguradoEmpresa> {
 
     public SeguradoEmpresaDAO() {
         super();
     }
-
+    @Override
+    public Class<SeguradoEmpresa> getClasseEntidade() {
+        return SeguradoEmpresa.class;
+    }
     public SeguradoEmpresa buscar(String numero) {
         Segurado segurado = super.buscar(numero);
         if (segurado instanceof SeguradoEmpresa) {

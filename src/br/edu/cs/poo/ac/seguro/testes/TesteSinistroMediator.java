@@ -244,7 +244,6 @@ public class TesteSinistroMediator extends TesteMediator {
 			sinRef.setSequencial(1);
 			Sinistro sinGrav = (Sinistro)cadastro.buscar(numeroSin);
 			Assertions.assertNotNull(sinGrav);
-			
 			Assertions.assertTrue(ComparadoraObjetosSerial.compareObjectsSerial(sinRef, sinGrav));
 		} catch (ExcecaoValidacaoDados e) {
 			Assertions.fail(e.fillInStackTrace());

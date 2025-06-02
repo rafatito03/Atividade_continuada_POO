@@ -33,4 +33,7 @@ public class SeguradoPessoa extends Segurado implements Registro{
     public boolean isEmpresa() {
         return false;  
     }
+	public String getCpf(){//coloquei aqui por causa do teste porque faz a mesma coisa do id unico
+		return cpf;
+	}
 }

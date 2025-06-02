@@ -133,7 +133,7 @@ public class TesteSeguradoEmpresaMediator extends TesteMediator {
 				"Recife");
 		SeguradoEmpresa seg = new SeguradoEmpresa("ACME LTDA.", end, LocalDate.now(),
 				BigDecimal.ZERO, "11851715000174", 1000.0, false);
-		cadastro.incluir(seg, seg.getCnpj());
+		cadastro.incluir(seg, seg.getCnpj());//era pra ser getIdUnico aqui mas por algum motivo ta no metodo antigo
 		seg = new SeguradoEmpresa("    ", end, LocalDate.now(),
 				BigDecimal.ZERO, "11851715000174", 1000.0, false);
 		String ret = med.alterarSeguradoEmpresa(seg);

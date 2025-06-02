@@ -3,10 +3,14 @@ package br.edu.cs.poo.ac.seguro.daos;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoPessoa;
 import br.edu.cs.poo.ac.seguro.entidades.Segurado;
 
-public class SeguradoPessoaDAO extends SeguradoDAO {
+public class SeguradoPessoaDAO extends SeguradoDAO<SeguradoPessoa>  {
 
     public SeguradoPessoaDAO() {
         super();
+    }
+    @Override
+    public Class<SeguradoPessoa> getClasseEntidade() {
+        return SeguradoPessoa.class;
     }
     @Override
     public SeguradoPessoa buscar(String numero) {

@@ -40,5 +40,8 @@ public class SeguradoEmpresa extends Segurado implements Registro {
 	public boolean isEmpresa() {
         return true;  
     }
+	public String getCnpj(){//coloquei aqui por causa do teste porque faz a mesma coisa do id unico
+		return cnpj;
+	}
 	
 }
