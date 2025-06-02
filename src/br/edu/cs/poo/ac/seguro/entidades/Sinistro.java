@@ -33,6 +33,17 @@ public class Sinistro implements Registro {
 				this.tipo = tipo;
 
 }
+	 public Sinistro(String numero, Veiculo veiculo, LocalDateTime dataHoraSinistro, //novo construtor para o teste de sinistro Mediator
+             LocalDateTime dataHoraRegistro, String usuarioRegistro,
+             BigDecimal valorSinistro, TipoSinistro tipo) {
+				 this.numero = numero;
+				 this.veiculo = veiculo;
+				 this.dataHoraSinistro = dataHoraSinistro;
+				 this.dataHoraRegistro = dataHoraRegistro;
+				 this.usuarioRegistro = usuarioRegistro;
+				 this.valorSinistro = valorSinistro;
+				 this.tipo = tipo;
+}
 
 	public String getIdUnico() {
 		return getNumero();

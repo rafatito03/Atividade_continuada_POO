@@ -53,14 +53,14 @@ public class SinistroDAO extends DAOGenerico<Sinistro> {
         return sinistros;
     }
 
-    public Sinistro[] listarPorApolice(String numeroApolice) {
-        return Arrays.stream(buscarTodos())
-                     .filter(sinistro -> {
-                         if (sinistro.getNumero() != null) {
-                            return sinistro.getNumero().equals(numeroApolice);
-                         }
-                         return false;
-                     })
+    public Sinistro[] listarPorApolice(String numeroApoliceParaFiltrar) {
+        Sinistro[] todosOsSinistros = this.buscarTodos(); 
+        if (todosOsSinistros == null || numeroApoliceParaFiltrar == null) {
+            return new Sinistro[0];
+        }
+        return Arrays.stream(todosOsSinistros)
+                     .filter(sinistro -> sinistro.getNumeroApolice() != null && 
+                                         sinistro.getNumeroApolice().equals(numeroApoliceParaFiltrar))
                      .toArray(Sinistro[]::new);
     }
 }
