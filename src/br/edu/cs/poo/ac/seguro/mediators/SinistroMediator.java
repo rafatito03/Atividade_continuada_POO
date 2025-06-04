@@ -51,16 +51,16 @@ public class SinistroMediator {
         }
 
         if (dados.getPlaca() == null || dados.getPlaca().trim().isEmpty()) {
-            excecao.adicionarMensagem("Placa do Veículo deve ser informada"); 
+            excecao.adicionarMensagem("Placa do Veiculo deve ser informada"); 
         } else {
             veiculoSinistrado = daoVeiculo.buscar(dados.getPlaca().trim());
             if (veiculoSinistrado == null) {
-                excecao.adicionarMensagem("Veículo não cadastrado");
+                excecao.adicionarMensagem("Veiculo não cadastrado");
             }
         }
 
         if (dados.getUsuarioRegistro() == null || dados.getUsuarioRegistro().trim().isEmpty()) {
-            excecao.adicionarMensagem("Usuário do registro de sinistro deve ser informado"); 
+            excecao.adicionarMensagem("Usuario do registro de sinistro deve ser informado"); 
         }
 
         if (dados.getValorSinistro() <= 0) {
@@ -78,7 +78,7 @@ public class SinistroMediator {
             }
         }
         if (!tipoSinistroValido) {
-            excecao.adicionarMensagem("Código do tipo de sinistro inválido"); 
+            excecao.adicionarMensagem("Codigo do tipo de sinistro invalido"); 
         }
         
         if (excecao.getMensagens().isEmpty() && veiculoSinistrado != null) { 
@@ -101,11 +101,11 @@ public class SinistroMediator {
             }
 
             if (!encontrouApolice) {
-                excecao.adicionarMensagem("Não existe apólice vigente para o veículo");
+                excecao.adicionarMensagem("Nao existe apolice vigente para o veiculo");
             } else {
             	BigDecimal valorSinistroBD = BigDecimal.valueOf(dados.getValorSinistro());
             	if (valorSinistroBD.compareTo(apoliceDeCobertura.getValorMaximoSegurado()) > 0) {
-                     excecao.adicionarMensagem("Valor do sinistro não pode ultrapassar o valor máximo segurado constante na apólice");
+                     excecao.adicionarMensagem("Valor do sinistro nao pode ultrapassar o valor maximo segurado constante na apolice");
                 }
             }
         } else if (excecao.getMensagens().isEmpty() && veiculoSinistrado == null && dados.getPlaca() != null && !dados.getPlaca().trim().isEmpty()) {

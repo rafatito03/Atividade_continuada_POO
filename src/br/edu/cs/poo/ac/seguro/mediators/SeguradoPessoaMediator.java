@@ -9,8 +9,9 @@ public class SeguradoPessoaMediator {
 
     private SeguradoPessoaDAO seguradoPessoaDAO = new SeguradoPessoaDAO();
     private static final SeguradoPessoaMediator instancia = new SeguradoPessoaMediator();
-
-    private SeguradoPessoaMediator() { }
+    
+    private SeguradoPessoaMediator() {}
+    
 
     public static SeguradoPessoaMediator getInstancia() {
         return instancia;
